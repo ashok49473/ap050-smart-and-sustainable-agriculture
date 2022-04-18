@@ -1,1 +1,1 @@
-ap050-smart-and-sustainable-agriculture
+# AP050-Smart and Sustainable Agriculture using FPGA
