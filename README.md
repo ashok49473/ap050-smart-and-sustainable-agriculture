@@ -78,4 +78,8 @@ FPGA is used as a large computational data processing platform, and the time-con
 
 FPGA can parallelize the tasks while the size consumption of such a system is less than the consumption of CPU and GPU. Especially for the image processing techniques, FPGA takes less time as compared with a microcontroller because of high-speed memory.
 
+### Block Diagram
+![image](https://user-images.githubusercontent.com/73692009/164240193-50192221-3b05-44f8-9183-4f819f8740c6.png)
+
+
 We need instantaneous processing for all the inputs. Also, we require a high computing power device. That can be done with the DE-10 Nano kit. Therefore, FPGA is the best choice for the development of our device.
