@@ -1,6 +1,9 @@
 
-#Final Paper:
+# Final Paper:
 http://www.innovatefpga.com/cgi-bin/innovate/teams.pl?Id=AP050&All=1
+
+# Youtube Video Link:
+https://youtu.be/y86IUrFhL6M
 
 High Level Block diagram:
 https://www.innovatefpga.com/attachment/member/2021/AP050-3A9EFC34B15CB14E/image/Slide%2016_9%20-%201%20(1).png
