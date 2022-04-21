@@ -165,4 +165,23 @@ Crop Resutls:
 
 
 
+7.Azure cloud/Website functionality:
+
+* We collected input from various sensors using DE_10 NANO and for serial communication we have used Arduino.
+
+* The collected data is then redirected to AZURE IOT HUB as messages using AZURE IOT client for the inference.
+
+* The collected data from FPGA like sensor data, RFS data and daily crop image is sent to AZURE STORAGE ACCOUNT.
+
+* We have developed a custom YOLOV5 model on AZURE APP SERVICE which receives a crop image from FPGA and sends the image with bounding boxes if any weed exists.
+
+* The data stored in AZURE STORAGE ACCOUNT is simultaneously redirected to the web server to display the data on website.
+
+* We have displayed XG-BOOST model for crop recommendation and CNN model for Disease Prediction as APIs using AZURE CONTAINERS in APP SERVICE.
+
+* Farmer will interact with these APIs through website and the expected results like recommended crop and disease cure control are displayed to farmer in the website.
+
+Azure Cloud/Website implementation:
+
+![image](https://user-images.githubusercontent.com/73692009/164345483-69b7e8a8-7654-473b-86e4-f32ddabda118.png)
 
