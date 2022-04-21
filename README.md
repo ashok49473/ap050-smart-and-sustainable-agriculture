@@ -79,7 +79,90 @@ FPGA is used as a large computational data processing platform, and the time-con
 FPGA can parallelize the tasks while the size consumption of such a system is less than the consumption of CPU and GPU. Especially for the image processing techniques, FPGA takes less time as compared with a microcontroller because of high-speed memory.
 
 ### Block Diagram
-![image](https://user-images.githubusercontent.com/73692009/164240193-50192221-3b05-44f8-9183-4f819f8740c6.png)
+
+![image](https://user-images.githubusercontent.com/73692009/164343226-d338126b-543c-45b9-a061-3cfa1d51aeba.png)
 
 
 We need instantaneous processing for all the inputs. Also, we require a high computing power device. That can be done with the DE-10 Nano kit. Therefore, FPGA is the best choice for the development of our device.
+
+##### The functional description and implementation of the entire project is illustrated with the help of a flow chart as follows:
+![image](https://user-images.githubusercontent.com/73692009/164343540-eecb01e3-1f5e-47fd-a266-029585752c48.png)
+
+
+###### A. Functional description of the project:
+
+The following are the various functions involved in the project: 
+
+1.Sensor data collection
+
+2.Crop recommendation system
+
+3.Weed Detection
+
+4.Disease Prediction
+
+5.Smart Irrigation
+
+6.Fertilizer recommendation
+
+7.Overall crop monitoring system
+
+Detailed description of above functions:
+
+### 1.Sensor data collection:
+
+Sensor data collection takes place in two parts.
+
+Part 1: Data collection through serial communication from Arduino to DE-10Nano. All the analog sensors i.e. NPK Sensor, pH Sensor, Water level sensor, Soil Moisture sensor, Electric Conductivity Sensor and Soil Temperature sensor are connected to the Arduino Uno Microcontroller and read the data from them. This Arduino board is connected to DE-10Nano board using USB hub to OTG (USB-II mini) This sensor data is transferred through Serial Communication to FPGA Board. This Data will be sent to Azure Cloud for every 10 minutes and stored in Azure Containers.
+
+Part 2:  Data collection from Temperature and Humidity sensors which are on RFS Daughter card is transferred to Azure IoT HUB as messages this data is being redirected to Azure Blob Storage.
+
+All the data stored in Azure Cloud is being processed and displayed on Website.
+
+Hardware Integration of the project:
+
+![image](https://user-images.githubusercontent.com/73692009/164343498-86afa3a7-10f1-4da1-9371-48381ad67762.png)
+
+Sensors we used in our project:
+
+![image](https://user-images.githubusercontent.com/73692009/164343515-6d5e432e-7dd3-4de7-9df8-daf2004b9cf7.png)
+
+## Implementation:
+
+     1. Data collection through sensors:
+
+Data collection through sensors is done with microcontroller (Arduino) and RFS Daughter Card. We collected the Analog sensor data from NPK Sensor, pH Sensor, Water level Sensor, Soil Moisture Sensor, Electric Conductivity Sensor and Soil temperature Sensor through Serial Communication to DE-10 Nano. We collected Temperature and Humidity data from Humidity sensor and Temperature Sensor presented in the RFS Daughter Card.
+
+    2 .Integration of sensors data with DE-10 Nano:
+
+Temperature sensor and Humidity Sensors present in RFS Daughter Card are connected to DE-10 Nan0 ( 2X20 GPIO 0 (JP1) pins).
+
+NPK Sensor is connected to Arduino through  MAX 485 module, PH sensor and EC sensor is connected to arduino through BNC Probes. Likewise water level , soil moisture and soil temperature is connected to ArduinoUno; is connected to DE10-Nano board using USB Hub.
+
+### 2.Crop recommendation system:
+
+For Crop recommendation the sensor values from NPK, EC, and PH are taken as inputs. These parameters are observed previously and then it is stored in the database. The received data sets of soil and climatic conditions have applied to the machine learning algorithm. The support vector machine and linear regression are sensitive learning models. We have modelled four different learning algorithms, such as linear regression, decision tree, k-nearest neighbors, and XGBoost. In this study, we have chosen XGBoost for its better performance. We trained a Tree based ML model (XGBoost) to predict the recommended crop using features like NPK, PH, EC. The dataset was collected from Kaggle(Publicly available dataset).The algorithm checks the original data of the soil (DSoil) with the test data of the soil (DTest) and estimates the crop suitable for that area. a. Moreover the algorithm checks the humidity, temperature, and water level present in the field. The agricultural field is monitored by picturing the field once in a day using a digital camera. Achieved 95% accuracy on test data.
+
+Implementation of Crop Recommendation.
+
+![image](https://user-images.githubusercontent.com/73692009/164343711-d4ee16d2-60b2-46ea-9b9d-25718c6a09a9.png)
+
+Sample Crop Data:
+
+![image](https://user-images.githubusercontent.com/73692009/164343913-14cfb9fb-d901-48eb-8f5e-347b6962b460.png)
+
+Confusion Matrix:
+
+![image](https://user-images.githubusercontent.com/73692009/164343950-e89fa645-06be-45a8-b935-8023977eeec6.png)
+
+Crop Resutls:
+
+![image](https://user-images.githubusercontent.com/73692009/164343978-27c6b221-d5cd-4c12-a8b7-4d7dbf9206c9.png)
+
+#### Our website recommending crop to the user :
+
+![image](https://user-images.githubusercontent.com/73692009/164344089-5da4e4c4-46cd-4a82-bb2d-d88aa525ae4f.png)
+
+
+
+
